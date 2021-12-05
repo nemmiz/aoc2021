@@ -6,11 +6,7 @@ BOARD_CHECKS = (
 def check_board(board, nums):
     for start, end, step in BOARD_CHECKS:
         if all(board[i] in nums for i in range(start, end, step)):
-            break
-    else:
-        return None
-
-    return sum(n for n in board if n not in nums)
+            return sum(n for n in board if n not in nums)
 
 def part1(boards, nums):
     for i in range(5, len(nums)):
