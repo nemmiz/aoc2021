@@ -4,7 +4,7 @@ def simulate(fish, iterations):
         fishes[f] += 1
     for _ in range(iterations):
         zeros = fishes[0]
-        for i in range(0, 8):
+        for i in range(8):
             fishes[i] = fishes[i+1]
         fishes[8] = zeros
         fishes[6] += zeros
