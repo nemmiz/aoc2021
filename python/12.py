@@ -23,8 +23,7 @@ def part2(connections):
     paths = [('start', set(), False)]
     while paths:
         path, visited, visited_twice = paths.pop()
-        steps = path.split(',')
-        current = steps[-1]
+        current = path[path.rfind(',')+1:]
 
         if current == 'end':
             finished_paths += 1
