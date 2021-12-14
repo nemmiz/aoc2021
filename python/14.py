@@ -22,10 +22,9 @@ def counts(pair, rules, remaining, cache):
 
 def solve(template, rules, steps):
     cache = {}
-    result = {}
+    result = {template[-1]: 1}
     for i in range(1, len(template)):
         result = merge(result, counts(template[i-1:i+1], rules, steps, cache))
-    result[template[-1]] += 1
     print(max(result.values()) - min(result.values()))
 
 with open('../input/14.txt') as stream:
