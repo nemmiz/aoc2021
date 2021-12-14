@@ -97,7 +97,6 @@ counts_all(template, rules, 40)
 #     #print(i, len(template))
 #     template = insert(template, rules)
     
-
 # #print(template)
 
 # uniq = set(template)
