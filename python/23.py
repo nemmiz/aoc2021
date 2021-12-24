@@ -1,59 +1,17 @@
 from heapq import heappush, heappop
 import sys
 
-
-
 def remove_solved(state):
     for x, c in ((3, 'A'), (5, 'B'), (7, 'C'), (9, 'D')):
         for y in range(5, 1, -1):
             if (x, y+1) not in state and state.get((x, y)) == c:
                 del state[(x, y)]
 
-
-# def remove_solved2(state):
-#     for room in state[1:]:
-
-
-#     for x, c in ((3, 'A'), (5, 'B'), (7, 'C'), (9, 'D')):
-#         for y in range(5, 1, -1):
-#             if (x, y+1) not in state and state.get((x, y)) == c:
-#                 del state[(x, y)]
-
-    # SOLVED = {
-    #     (3, 3): 'C',
-    #     (3, 2): 'C',
-    #     (5, 3): 'C',
-    #     (5, 2): 'C',
-    #     (3, 3): 'C',
-    #     (3, 2): 'C',
-    #     (3, 3): 'C',
-    #     (3, 2): 'C',
-    # }
-    # if state.get((3,3)) == 'A':
-    #     del state[(3, 3)]
-    # if state.get((5,3)) == 'B':
-    #     del state[(5, 3)]
-    # if state.get((7,3)) == 'C':
-    #     del state[(7, 3)]
-    # if state.get((9,3)) == 'D':
-    #     del state[(9, 3)]
-    # if (3, 3) not in state and state.get((3,2)) == 'A':
-    #     del state[(3, 2)]
-    # if (5, 3) not in state and state.get((5,2)) == 'B':
-    #     del state[(5, 2)]
-    # if (7, 3) not in state and state.get((7,2)) == 'C':
-    #     del state[(7, 2)]
-    # if (9, 3) not in state and state.get((9,2)) == 'D':
-    #     del state[(9, 2)]
-
 def is_solved(state):
     for x in range(3, 10, 2):
         for y in range(2, 6):
             if (x, y) in state:
                 return False
-    # for pos in ((3, 2), (3, 3), (5, 2), (5, 3), (7, 2), (7, 3), (9, 2), (9, 3)):
-    #     if pos in state:
-    #         return False
     return True
 
 def move_cost(state, from_pos, to_pos):
@@ -120,56 +78,7 @@ def valid_moves(state, pos):
             cost = move_cost(state, pos, rt)
             if cost is not None:
                 return [(rt, cost)]
-            
         return []
-
-            # if (3, 3) in state:
-            #     cost = move_cost(state, pos, (3, 3))
-            #     if cost is not None:
-            #         return [((3, 3), cost)]
-            # elif (3, 2) in state:
-            #     cost = move_cost(state, pos, (3, 2))
-            #     if cost is not None:
-            #         return [((3, 2), cost)]
-            # else:
-            #     sys.exit('Bono my targets are gone!')
-            # return []
-        # if me == 'B':
-        #     if (5, 3) in state:
-        #         cost = move_cost(state, pos, (5, 3))
-        #         if cost is not None:
-        #             return [((5, 3), cost)]
-        #     elif (5, 2) in state:
-        #         cost = move_cost(state, pos, (5, 2))
-        #         if cost is not None:
-        #             return [((5, 2), cost)]
-        #     else:
-        #         sys.exit('Bono my targets are gone!')
-        #     return []
-        # if me == 'C':
-        #     if (7, 3) in state:
-        #         cost = move_cost(state, pos, (7, 3))
-        #         if cost is not None:
-        #             return [((7, 3), cost)]
-        #     elif (7, 2) in state:
-        #         cost = move_cost(state, pos, (7, 2))
-        #         if cost is not None:
-        #             return [((7, 2), cost)]
-        #     else:
-        #         sys.exit('Bono my targets are gone!')
-        #     return []
-        # if me == 'D':
-        #     if (9, 3) in state:
-        #         cost = move_cost(state, pos, (9, 3))
-        #         if cost is not None:
-        #             return [((9, 3), cost)]
-        #     elif (9, 2) in state:
-        #         cost = move_cost(state, pos, (9, 2))
-        #         if cost is not None:
-        #             return [((9, 2), cost)]
-        #     else:
-        #         sys.exit('Bono my targets are gone!')
-        #     return []
     else:
         targets = []
         for target in ((1, 1), (2, 1), (4, 1), (6, 1), (8, 1), (10, 1), (11, 1)):
@@ -177,18 +86,6 @@ def valid_moves(state, pos):
             if cost is not None:
                 targets.append((target, cost))
         return targets
-
-        
-# def display(state):
-#     state = state.copy()
-#     for pos, c in (((3,2),'A'),((3,3),'A'),((5,2),'B'),((5,3),'B'),((7,2),'C'),((7,3),'C'),((9,2),'D'),((9,3),'D')):
-#         if pos not in state:
-#             state[pos] = c
-#     for y in range(7):
-#         for x in range(13):
-#             print(state.get((x,y), '#'), end='')
-#         print()
-
     
 def const_state(state):
     tmp = []
@@ -197,7 +94,6 @@ def const_state(state):
         tmp.append(k[1])
         tmp.append(state[k])
     return tuple(tmp)
-    
 
 def solve(initial_state):
     i = 0
